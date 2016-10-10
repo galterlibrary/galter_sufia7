@@ -1,0 +1,25 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  encoding: unicode
+  host: 127.0.0.1
+
+development:
+  <<: *default
+  database: sufia7_dev
+
+test:
+  <<: *default
+  database: sufia7_test
+
+staging:
+  <<: *default
+  database: <%= ENV['DB_NAME'] %>
+  user: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
+
+production:
+  <<: *default
+  user: <%= ENV['DB_USER'] %>
+  database: <%= ENV['DB_NAME'] %>
+  password: <%= ENV['DB_PASS'] %>
